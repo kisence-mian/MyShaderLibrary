@@ -8,4 +8,7 @@
     4.自定义投影Shader
 
 #Shader列表
-	1.水面折射(RefractionWater)
+	1.水面折射(RefractionWater) 
+	2.热扰动效果(Fire)
+	3.放大镜(MagnifyingLens)
+	4.隐身水波纹效果(CloakingRipple)
