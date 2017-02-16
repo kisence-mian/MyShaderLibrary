@@ -23,6 +23,8 @@ Shader "MyShaderLib/Fire"
  			// #pragma exclude_renderers d3d11
 			#pragma vertex vert
 			#pragma fragment frag
+
+			#pragma debug hello
 			// make fog work
 			// #pragma multi_compile_fog
 			
@@ -58,6 +60,8 @@ Shader "MyShaderLib/Fire"
 				UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
 			}
+
+
 			
 			fixed4 frag (v2f i) : SV_Target
 			{

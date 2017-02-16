@@ -39,7 +39,6 @@ Shader "MyShaderLib/CloakingRipple"
 			{
 				float2 uv : TEXCOORD0;
 				float4 screenPos : TEXCOORD1;
-				float2 offset : TEXCOORD2;
 				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 			};
@@ -62,16 +61,8 @@ Shader "MyShaderLib/CloakingRipple"
 			{
 				i.screenPos.xy *= 0.99;
 
-				// sample the texture
 				fixed4 col = tex2Dproj(_GrabTexture, i.screenPos);
 
-				// if(i.screenPos.y > 0.5)
-				// {
-				// 	col = float4(0,0,0,0);
-				// 	col.rg = i.screenPos.xy;
-				// }
-				// apply fog
-				// UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;
 			}
 			ENDCG
