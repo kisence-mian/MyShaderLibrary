@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 //writed by Zsy 2016.12.15
 Shader "CC/场景/湖面"
 {
@@ -55,7 +57,7 @@ Shader "CC/场景/湖面"
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 
 				fixed3 worldSpaceVertex = mul(unity_ObjectToWorld,(v.vertex)).xyz;
 				fixed2 waveUv = worldSpaceVertex.xz;

@@ -1,4 +1,6 @@
-﻿Shader "MyShaderLib/VolumeFog"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShaderLib/VolumeFog"
 {
 	Properties
 	{
@@ -43,10 +45,10 @@
 			v2f vert (appdata_full v)
 			{
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP,v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.scr = o.pos;
-				o.cen = mul(UNITY_MATRIX_MVP,float4(0,0,0,1));
-				o.vp = mul(UNITY_MATRIX_MVP,v.vertex);
+				o.cen = UnityObjectToClipPos(float4(0,0,0,1));
+				o.vp = UnityObjectToClipPos(v.vertex);
 
 				float3 viewDir = ObjSpaceViewDir(v.vertex);
 				viewDir = normalize(viewDir);

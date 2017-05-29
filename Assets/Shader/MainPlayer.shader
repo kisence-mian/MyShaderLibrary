@@ -1,4 +1,6 @@
-﻿//writed by Zsy 2016.12.15
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//writed by Zsy 2016.12.15
 Shader "CC/模型/主角(Diffuse)"
 {
 	Properties
@@ -51,7 +53,7 @@ Shader "CC/模型/主角(Diffuse)"
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
 				fixed3 normal = normalize(v.normal);
 				fixed3 viewdir = normalize(ObjSpaceViewDir(v.vertex));
@@ -102,7 +104,7 @@ Shader "CC/模型/主角(Diffuse)"
 			v2f_mainplayer vert (appdata_base v)
 			{
 				v2f_mainplayer o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord;
 				o.normdir = v.normal;
 				o.viewdir = v.vertex;
@@ -161,7 +163,7 @@ Shader "CC/模型/主角(Diffuse)"
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
 				fixed3 normal = normalize(v.normal);
 				fixed3 viewdir = normalize(ObjSpaceViewDir(v.vertex));
@@ -212,7 +214,7 @@ Shader "CC/模型/主角(Diffuse)"
 			v2f_mainplayer vert (appdata_base v)
 			{
 				v2f_mainplayer o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord;
 				o.normdir = UnityObjectToWorldNormal(v.normal);
 				o.viewdir.xyz = WorldSpaceViewDir(v.vertex) + _Offset;
@@ -259,7 +261,7 @@ Shader "CC/模型/主角(Diffuse)"
 			v2f vert(appdata_base v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord;
 				return o;
 			}

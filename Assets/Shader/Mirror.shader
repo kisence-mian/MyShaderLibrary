@@ -1,4 +1,6 @@
-﻿Shader "MyShaderLib/Mirror"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShaderLib/Mirror"
 {
 	Properties
 	{
@@ -40,7 +42,7 @@
 				// proj = mul(_projMat,_object2Wrold);
 
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP,v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				// o.texc = mul(proj,v.vertex);
 				// UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
