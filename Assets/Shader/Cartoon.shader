@@ -17,8 +17,9 @@ Shader "MyShaderLib/Cartoon"
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" "Queue"="Geometry"}
-		LOD 100
+		// LOD 100
 
+		//第一个通道描边
 		Pass
 		{
 			Cull Front
@@ -52,8 +53,12 @@ Shader "MyShaderLib/Cartoon"
 
 				float4 pos = mul(UNITY_MATRIX_MV,v.vertex);
 				float3 normal = mul((float3x3)UNITY_MATRIX_IT_MV,v.normal);
-				normal.z = -0.5;
-				o.pos = pos + float4(normalize(normal),0) * _Outline;
+				 normal.z = -0.5;
+
+				pos = pos + float4(normalize(normal), 0) * _Outline;
+				o.pos = mul(UNITY_MATRIX_P, pos);
+
+				// o.pos = pos + float4(normalize(normal),0) * _Outline;
 
 				return o;
 			}

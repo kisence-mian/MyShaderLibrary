@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 3f7cd3bda6c8d43e1a081db6f8657f21
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Head
+    100002: HeadDummy
+    100004: HeadTop_End
+    100006: Hips
+    100008: LeftArm
+    100010: LeftEye
+    100012: LeftFoot
+    100014: LeftFootToeBase_End
+    100016: LeftForeArm
+    100018: LeftHand
+    100020: LeftHandIndex1
+    100022: LeftHandIndex2
+    100024: LeftHandIndex3
+    100026: LeftHandThumb1
+    100028: LeftHandThumb2
+    100030: LeftHandThumb3
+    100032: LeftHandThumb4
+    100034: LeftLeg
+    100036: LeftShoulder
+    100038: LeftToeBase
+    100040: LeftUpLeg
+    100042: //RootNode
+    100044: MascotBodyGeo
+    100046: MascotEyesGeo
+    100048: MascotHeadGeo
+    100050: MascotMeshes
+    100052: Neck
+    100054: RightArm
+    100056: RightEye
+    100058: RightFoot
+    100060: RightFootToeBase_End
+    100062: RightForeArm
+    100064: RightHand
+    100066: RightHandIndex1
+    100068: RightHandIndex2
+    100070: RightHandIndex3
+    100072: RightHandThumb1
+    100074: RightHandThumb2
+    100076: RightHandThumb3
+    100078: RightHandThumb4
+    100080: RightLeg
+    100082: RightShoulder
+    100084: RightToeBase
+    100086: RightUpLeg
+    100088: Spine
+    100090: Spine1
+    100092: Spine2
+    400000: Head
+    400002: HeadDummy
+    400004: HeadTop_End
+    400006: Hips
+    400008: LeftArm
+    400010: LeftEye
+    400012: LeftFoot
+    400014: LeftFootToeBase_End
+    400016: LeftForeArm
+    400018: LeftHand
+    400020: LeftHandIndex1
+    400022: LeftHandIndex2
+    400024: LeftHandIndex3
+    400026: LeftHandThumb1
+    400028: LeftHandThumb2
+    400030: LeftHandThumb3
+    400032: LeftHandThumb4
+    400034: LeftLeg
+    400036: LeftShoulder
+    400038: LeftToeBase
+    400040: LeftUpLeg
+    400042: //RootNode
+    400044: MascotBodyGeo
+    400046: MascotEyesGeo
+    400048: MascotHeadGeo
+    400050: MascotMeshes
+    400052: Neck
+    400054: RightArm
+    400056: RightEye
+    400058: RightFoot
+    400060: RightFootToeBase_End
+    400062: RightForeArm
+    400064: RightHand
+    400066: RightHandIndex1
+    400068: RightHandIndex2
+    400070: RightHandIndex3
+    400072: RightHandThumb1
+    400074: RightHandThumb2
+    400076: RightHandThumb3
+    400078: RightHandThumb4
+    400080: RightLeg
+    400082: RightShoulder
+    400084: RightToeBase
+    400086: RightUpLeg
+    400088: Spine
+    400090: Spine1
+    400092: Spine2
+    4300000: MascotHeadGeo
+    4300002: MascotEyesGeo
+    4300004: MascotBodyGeo
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: MascotBodyGeo
+    13700002: MascotEyesGeo
+    13700004: MascotHeadGeo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
