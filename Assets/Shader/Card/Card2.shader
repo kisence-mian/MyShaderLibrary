@@ -1,20 +1,20 @@
-﻿Shader "MyShaderLib/Card"
+﻿Shader "MyShaderLib/Card2"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_Noise ("Noise", 2D) = "white" {}
 		_Mask ("Mask", 2D) = "white" {}
-		_Mask2 ("Mask2", 2D) = "white" {}
 
+		_Light("Light",2D)  = "white" {}
+		_LightSpeed("Light",Range(0,100)) = 0
+
+		_Noise ("Noise", 2D) = "white" {}
 		_NoiseIntensity("NoiseIntensity",Float) = 1
-		_speed("speed",Float) = 1
+		_NoiseSpeed("NoiseSpeed",Float) = 1
 
-		_EffectTex1 ("EffectTex1", 2D) = "white" {}
+		_RoTex ("RoTex", 2D) = "white" {}
 		_RotateSpeed("RotateSpeed",Float) = 1
 
-		_ScrollTex1 ("ScrollTex1", 2D) = "white" {}
-		_ScrollSpeed("ScrollSpeed",Float) = 1
 	}
 	SubShader
 	{
@@ -38,25 +38,23 @@
 			struct v2f
 			{
 				float2 uv : TEXCOORD0;
-				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 			};
 
 			sampler2D _MainTex;
-			sampler2D _Noise;
-			sampler2D _Mask;
-			sampler2D _Mask2;
-
 			float4 _MainTex_ST;
+
+			sampler2D _Mask;
+			sampler2D _Light;
+			float _LightSpeed;
+
+			sampler2D _Noise;
 			float4 _Noise_ST;
-			float _speed;
 			float _NoiseIntensity;
+			float _NoiseSpeed;
 
-			sampler2D _EffectTex1;
+			sampler2D _RoTex;
 			float _RotateSpeed;
-
-			sampler2D _ScrollTex1;
-			float _ScrollSpeed;
 			
 			v2f vert (appdata v)
 			{
@@ -74,44 +72,40 @@
 
 				return NoiseColor;
 			}
+
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 mask2 = tex2D(_Mask2,i.uv.xy);
+				fixed4 Mask = tex2D(_Mask,i.uv);
+				float2 noisetimer = float2(_Time.x,_Time.x);
 
 				//扰动
-				fixed4 mask = tex2D(_Mask,i.uv.xy);
+				float2 noise = sampleFromNoise(i.uv + noisetimer * _NoiseSpeed);
 
-				float2 timer = float2(_Time.x ,_Time.x);
-				float2 noiseOffset = fixed2(0,0.5);
-
-				noiseOffset = sampleFromNoise(i.uv.xy + timer * _speed);
-
-				float2 newUV = i.uv + noiseOffset * mask.r * _NoiseIntensity;
 				// sample the texture
-				fixed4 col = tex2D(_MainTex, newUV);
+				fixed4 col = tex2D(_MainTex, i.uv + noise * _NoiseIntensity * Mask.g);
 
+				//流光
+				float2 timer = float2(0,_Time.x);
+				float2 uv =  i.uv;
+				uv.y = uv.y/2;
 
 				//旋转
 				fixed2 pivot = fixed2(0.5,0.5);
-				float degrees = _Time.x * _RotateSpeed;
+				float degrees = -_Time.x * _RotateSpeed;
 				fixed cs = cos(degrees);
 				fixed sn = sin(degrees);
 				fixed2 RUV = mul(float2x2(cs,-sn,sn,cs),i.uv - pivot) + pivot;
 
-				fixed4 Rcol = tex2D(_EffectTex1, RUV);
-				col = col + (Rcol * 0.3 ) * ( mask2.r);
+				fixed4 Rcol = tex2D(_RoTex, RUV);
+				col = col + (Rcol * 0.5 ) * ( Mask.b);
 
-				//滚动
-				float2 offsetUV = i.uv.xy + sin( _Time.x * _ScrollSpeed) * float2(0,0.3) + float2(0,-0.3) ;
-				fixed4 Scol = tex2D(_ScrollTex1, offsetUV);
 
-				col = col + (Scol * 0.3) * mask.g;
-
+				fixed4 lightCol = tex2D(_Light, uv  + timer * _LightSpeed);
+				col = col + col * (lightCol.b/2) * Mask.r;
 
 				return col;
 			}
-
 			ENDCG
 		}
 	}
